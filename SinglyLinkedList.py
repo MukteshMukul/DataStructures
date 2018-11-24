@@ -9,69 +9,106 @@ class Node(object):
         self.value = value
         self.nextnode = None
 
+class LinkedList(object):
 
-def reverseLinkedList(head):
+    def __init__(self):
+        self.head = None
 
-    curr = head
-    prev = None
-    next = None
+    def insert(self, elem):
+        tmpnode = Node(elem)
+        tmpnode.nextnode = self.head
+        self.head = tmpnode
 
-    while curr:
-        next = curr.nextnode
-        curr.nextnode = prev
-        prev = curr
-        curr = next
-
-    return prev
-
-
-"""
-Function to reverese every n node in a linked list
-"""
-def reversethreenodes(head, n):
-
-    print(head.value)
-    current = head
-    previous = None
-    next = None
-
-    count = 1
-    while current:
-        print("count = %d " % count)
-        if count == n:
-            reversethreenodes(next, n)
-            count = 1
+    def append(self, elem):
+        if self.head is None:
+            self.insert(elem)
         else:
+            tmpnode = self.head
+            while tmpnode.nextnode is not None:
+                tmpnode = tmpnode.nextnode
+
+            newnode = Node(elem)
+            tmpnode.nextnode = newnode
+
+    def reverseList(self):
+        current = self.head
+        next = None
+        prev = None
+
+        while current is not None:
             next = current.nextnode
-            current.nextnode = previous
-            previous = current
+            current.nextnode = prev
+            prev = current
+            current = next
+
+        return prev
+
+    def reverseEveryKnode(self, head, k):
+        current = head
+        next = None
+        prev = None
+        count = 0
+
+        while(current is not None and count < k):
+            next = current.nextnode
+            current.nextnode = prev
+            prev = current
             current = next
             count += 1
-    return previous
+
+        if next is not None:
+            head.nextnode = self.reverseEveryKnode(next, k)
+
+        return prev
+
+    def printlist(self):
+        if self.head is None:
+            print("empty list")
+
+        tmp = self.head
+        while tmp:
+            print(tmp.value)
+            tmp = tmp.nextnode
+
+    def __len__(self):
+        length = 0
+        tmp = self.head
+        while tmp:
+            length += 1
+            tmp = tmp.nextnode
+        return length
+
 
 def main():
-    a = Node(1)
-    b = Node(2)
-    c = Node(3)
-    # d = Node(4)
-    # e = Node(5)
-    # f = Node(6)
-    # g = Node(7)
+    slinklist = LinkedList()
+
+    # slinklist.insert(1)
+    # slinklist.insert(2)
+    # slinklist.insert(3)
+
+    slinklist.insert(1)
+    slinklist.insert(2)
+    slinklist.insert(3)
+    slinklist.insert(4)
+    slinklist.insert(5)
+    slinklist.insert(6)
+
+    print("\n---- List is -----\n")
+    slinklist.printlist()
+
+    print("\n---- Now List is -----\n")
+    slinklist.printlist()
+
+    # print("\n---- reverseList is -----\n")
+    # slinklist.head = slinklist.reverseEveryKnode(slinklist.head, 3)
+    # slinklist.printlist()
 
 
-    # Connect nodes
-    a.nextnode = b
-    b.nextnode = c
-    # c.nextnode = d
-    # d.nextnode = e
-    # e.nextnode = f
-    # f.nextnode = g
-
-    # rev = reverseLinkedList(a)
-    rev = reversethreenodes(a, 3)
-    while rev:
-        print(rev.value)
-        rev = rev.nextnode
+    # print("\n---- reverseList is -----\n")
+    # rev = slinklist.reverseList()
+    # while rev:
+    #     print(rev.value)
+    #     rev = rev.nextnode
 
 
 if __name__ == '__main__':
