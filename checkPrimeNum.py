@@ -12,18 +12,18 @@ def get_options(args=None):
     return options, args
 
 
-def printPrime(num, maxNum):
-    val = 2
-    while((val*val) < maxNum):
-        for i in range( val, maxNum):
-            if num[i]!= -1:
-                if num[i]%val == 0:
+def printPrime(lower, upper):
+    num = list()
+    val = lower
+    while((val*val) < upper):
+        for i in range( val, upper):
+            if num[i]!= -1 and num[i]%val == 0:
                    num[i]=-1
         val+=1
 
-    for i in range(1,len(num)):
+    for i in range(lower,len(num)):
         if num[i] != -1:
-           print num[i]
+           print(num[i])
 
 
 def main(args=None):
@@ -32,10 +32,12 @@ def main(args=None):
     try:
         maxNum = int(options.innum)
     except TypeError:
-        print 'Please enter a valid integer'
+        print('Please enter a valid integer')
 
-    num = range(1,maxNum +1 )
-    printPrime(num, maxNum)
+    # num = range(1,maxNum +1 )
+    lower = 3
+    upper = 9
+    printPrime(lower, upper)
 
 if __name__ == '__main__':
     main()
