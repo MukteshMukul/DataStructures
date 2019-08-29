@@ -1,0 +1,28 @@
+Problem statement
+
+Brief Requirements:
+
+Write a program to create and use a word dictionary. The key functionalities would include
+
+    API to create and persist a word dictionary by uploading a text file having few paragraphs (file Size Max: 200 MB).
+    User should be able to search if a given word is available in the dictionary
+    Creation of UI is optional
+
+
+Rules:
+
+    Time given: 5 Hours
+    TechStack: Use Java, Node, Python or Dot Net based tech stack.
+    You need to fill in the implicit requirements. Your submission will be judged based on the completeness of implicit requirements
+    Your submission should be error free and we should be able to run it without any extra instructions needed from you
+
+
+Next Steps:
+
+    After your submission, our architects will evaluate your code
+    If selected, you will be contacted and will be called for a discussion where you will be asked to explain your code.
+
+
+Extra Credits given for (these are not must have, but will give you an edge in getting selected):
+
+    Test cases
